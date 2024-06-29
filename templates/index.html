@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+</head>
+<header>
+  <ul class="localnav">
+    <li class="localnav-left">
+      <img class="logo-nav" src="{{ url_for('static', filename='img/logo.png')}}" alt="">
+    </li>
+    <li class="localnav"><a class="active" href="{{ url_for('index') }}">Inicio</a></li>
+    <li class="localnav"><a class="localnav" href="{{ url_for('news') }}">Noticias</a></li>
+    <li class="localnav"><a class="localnav" href="{{ url_for('catalog') }}">Catalogo</a></li>
+    <li class="localnav"><a class="localnav" href="{{ url_for('academy') }}">Academia</a></li>
+  </ul>
+</header>
+
+<body>
+  <div class="grid-container">
+    <div id="grid-academy">
+      <a href="{{ url_for('academy') }}">
+        <img class="activegif" src="{{ url_for('static', filename='gif/e30.gif') }}">
+
+        <div class="bottom">Bienvenido a la Academia ...<span id="hide">&nbsp; ¡Subeté y conviertete en uno de
+            nuestros pilotos!</span></div>
+      </a>
+    </div>
+    <div id="grid-news">
+      <a href="{{ url_for('news' ) }}">
+        <img class="activegif" src="{{ url_for('static', filename='gif/electric.gif' )}}" alt="">
+        <div class="bottom">El Futuro con un Pulso Electrico ...<span id="hide">&nbsp; Enterate de lo ultimo de
+            nuestra
+            tecnologia electrica</span>
+        </div>
+      </a>
+    </div>
+    <div id="grid-vehicles">
+      <div class="top" style="z-index: 1;">Escoge tu destino</div>
+      <div class="split">
+        <img class="activegifsplit" src="{{ url_for('static', filename='gif/e36.gif') }}" alt="">
+        <img class="activegifsplit" src="{{ url_for('static', filename='gif/motorrad.gif') }}" alt="">
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
