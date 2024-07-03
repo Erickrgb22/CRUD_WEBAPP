@@ -28,14 +28,16 @@ para recibir formación y certificación tecnica de parte de los mejores tutores
 
 # Para iniciar el aplicativo puede usar docker siguiendo los pasos:
 ### Clone el repositorio o descarguelo como ZIP y extraigalo
-git clone (URL DEL REPOSITORIO)
+git clone https://github.com/Erickrgb22/CRUD_WEBAPP.git
 
-# NOTA CREE UNA CARPETA EN LA RAIZ DEL PROYECTO CON NOMBRE "db" EN MINUSCULAS ANTES DE CONTINUAR
+# NOTA CREE UNA CARPETA EN LA RAIZ DEL PROYECTO CON NOMBRE "db" EN MINUSCULAS ANTES DE CONTINUAR DOCKER LA USA PARA GUARDAR LAS TABLAS 
 
-### Este comando construira el contenedor del aplicativo 
+### Con este comando construira el contenedor del aplicativo 
 docker-compose build
 
-### Este comando creara 2 conenedores uno con el aplicativo y otro con su base de datos
+### Con este comando creara 2 conenedores uno con el aplicativo y otro con su base de datos y estaria dispobible el aplicativo accede mediante:
+localhost:5000
+
 docker-compose up
 
 # Puede iniciar el aplicativo solo con python y usando una base de datos externa (OPCIONAL)
@@ -47,11 +49,11 @@ Luego debe modificar el campo HOST dentro del archivo database.py, para que se c
 Seguido de ese paso debe iniciar el venv de python que ejecutando "source .venv/bin/activate" usando bash en linux
 Luego con python backend.py inicia el backend 
 
-#Estructura de carpetas del proyecto
+# Estructura de carpetas del proyecto
 ![2024-07-03-120138_hyprshot](https://github.com/Erickrgb22/E-SD1-PIM2_PROYECTOWEB_V27225952/assets/45826601/a22e4644-f8f4-4066-9240-d415bcfdc5e9)
 
 
-#Archivos de Interes
+# Archivos de Interes
 
 ### Backend de Flask: backend.py
 ### Conexion con SQL: database.py (no modificar si usa docker)
