@@ -1,7 +1,16 @@
+# Importando la libreria de Flask con diferentes modulos para
+# el renderizado de los templates "HTML"
 from flask import Flask, redirect, render_template, request, url_for
+
+# Importa la conexion de la base de datos del archivo database.py
 import database as db
 
+# Creacion de un objeto que usa Flask
 backend = Flask(__name__)
+
+# Definicion de rutas de Flask:
+
+# Ruta Raiz
 
 
 @backend.route("/")
@@ -9,9 +18,19 @@ def index():
     return render_template("index.html")
 
 
+# Ruta para renderizar el apartado de noticias
+# La plantilla de momento esta vacia solo contiene el navbar
+# ToDo: poblar de contenido esta vista
+
+
 @backend.route("/news")
 def news():
     return render_template("news.html")
+
+
+# Ruta para renderizar el apartado del catalogo
+# La plantilla esta vacia solo contiene el navbar
+# Todo: poblar el contenido de esta vista
 
 
 @backend.route("/catalog")
@@ -19,7 +38,15 @@ def catalog():
     return render_template("catalog.html")
 
 
+# Ruta para acceder a la tabla de estudiantes del apartado
+# Academy, se rederiza la plantilla base con el navbar mas una tabla
+# que muestra el registro de los estudiantes
+
+
 @backend.route("/academy", methods=["GET", "POST"])
+# La funcion academy renderiza una tabla usando clases de boostrap
+# y la rellena usando la conexion SQL mediante un cursor definido
+# se hace un llamado a los datos desde la plantilla html VER academy.html
 def academy():
     cursor = db.database.cursor()
     cursor.execute("SELECT * FROM v27225952")
@@ -30,11 +57,19 @@ def academy():
     for record in result:
         insertObject.append(dict(zip(columnNames, record)))
     cursor.close()
-
+    # Devuelve la plantilla y le envia los regisros de los usuarios
     return render_template("academy.html", data=insertObject)
 
 
+# Ruta para añadir estudiantes
+
+
 @backend.route("/add_student", methods=["POST"])
+# La funcion add_student realiza el query para añadir estudiantes a la tabla
+# por medio del modulo request form de flask el cual se trae los valores
+# insertados en el formulario, estos los ordenamos y los pasamos al query mediante
+# la funcion cursor del modulo database, regresa la pagina refrescada con el nuevo
+# Registro añadido
 def add_student():
     cedula = request.form["cedula"]
     lastname = request.form["lastname"]
@@ -51,6 +86,10 @@ def add_student():
         db.database.commit()
 
     return redirect(url_for("academy"))
+
+
+# Ruta para editar los datos de un estudiantes
+# Funcion similar a la anterior pero con query UDATE
 
 
 @backend.route("/edit_student/<string:id>", methods=["POST"])
@@ -70,6 +109,9 @@ def edit_student(id):
         db.database.commit()
 
     return redirect(url_for("academy"))
+
+
+# Ruta para eliminar unestudiante
 
 
 @backend.route("/del_student/<string:id>")

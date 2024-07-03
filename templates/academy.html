@@ -2,6 +2,8 @@
 <html>
 
 <head>
+  <!-- Se hace uso combinado de la hoja de estilo externa del pryecto /static/sytyle.css
+y de las hojas de estilo de boostrap para las tablas -->
   <meta charset="utf-8">
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
@@ -23,8 +25,10 @@
   </ul>
 </header>
 
-<body style="background-color: #2D4046;">
+<!-- Cuerpo de la vista -->
 
+<body style="background-color: #2D4046;">
+  <!-- Formulario de registro query INSERT -->
   <div class="container">
     <div class="card">
       <div class="card-body">
@@ -60,7 +64,7 @@
           </div>
         </form>
 
-
+        <!-- Tabla de registros -->
         <table class="table table-bordered">
           <thead>
             <th scope="col">#</th>
@@ -72,6 +76,7 @@
             <th scope="col">Sección</th>
           </thead>
           <tbody>
+            <!-- Loop que obtiene los datos de los registros por ID-->
             {% for d in data%}
             <tr>
               <td>{{d.ID}}</td>
@@ -85,7 +90,7 @@
                   data-bs-target="#modal{{d.ID}}">Editar</button></td>
               <td><a href="{{ url_for('del_student', id=d.ID )}}" class="btn btn-danger btn-sm">Borrar</a></td>
             </tr>
-            <!-- MODAL -->
+            <!-- MODAL (VENTANA EMERGENTE) para modificar query UPDATE-->
             <div class="modal fade" id="modal{{d.ID}}" tabindex="-1" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
               <div class="modal-dialog">

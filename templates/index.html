@@ -1,11 +1,15 @@
 <!DOCTYPE html>
+<!-- Todas las clases de estilo ccs son de la hoja externa /static/style.css -->
 <html>
 
 <head>
+  <!--Llamado al archivo de hojas de estilo externo en la ruta 
+/static/styles.css -->
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
 </head>
 <header>
+  <!--Barra de navegacion usando las clases de la hoja de estilo style.css  -->
   <ul class="localnav">
     <li class="localnav-left">
       <img class="logo-nav" src="{{ url_for('static', filename='img/logo.png')}}" alt="">
